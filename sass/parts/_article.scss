@@ -54,7 +54,7 @@ article{
 			font-style: italic;
 		}
 		p{
-			margin-top: 10px;	
+			margin-top: 10px;
 		}
 		h2{
 			font-weight: 300;
@@ -137,5 +137,5 @@ article{
 }
 .share{
 	padding: 15px 0;
-	@include border-shadow();
+	// @include border-shadow();
 }

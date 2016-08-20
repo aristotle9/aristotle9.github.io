@@ -4,8 +4,8 @@ single: true
 ---
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">{% include article.html %}</article>
-{% unless page.sharing == false %}
-	{% include post/sharing.html %}
+{% unless site.jiathis_share == false or page.sharing == false %}
+    {% include post/jiathis.html %}
 {% endunless %}
 {% if site.disqus_short_name and page.comments == true %}
 <section id="comment">

@@ -63,6 +63,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 #   3rd Party Settings    #
 # ----------------------- #
 
+# jiathis 分享
+jiathis_share: true
+
 # 多说评论
 duoshuo_comments: true
 duoshuo_short_name: mukioblog
