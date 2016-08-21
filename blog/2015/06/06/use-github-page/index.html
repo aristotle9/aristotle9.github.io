@@ -1,0 +1,165 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>用Github做静态网站服务器 - aristotle9's Blog</title>
+	<meta name="author" content="aristotle9">
+
+	
+	<meta name="description" content="用Github做静态网站服务器 年初换了一台虚拟主机，但是没有把博客网站重新配置好。一拖又过了大半年时间。 近来想起应该分享一些想法，于是想起来要重新搭建一个博客站点。中途想试试新的静态网站生成工具。在 StaticGen 上看到一个列表，其中 Hexo 看起来是个比较流行的 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="aristotle9's Blog" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://blog.mukio.org/blog/2015/06/06/use-github-page/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="/javascripts/jquery-3.1.0.min.js"></script>
+	
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<img src="/images/avatar160x160.png" alt="Profile Picture" style="width: 160px;" />
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">关于我</a></li>
+    <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/aristotle9" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">用Github做静态网站服务器</h1>
+	<div class="entry-content" itemprop="articleBody"><p>年初换了一台虚拟主机，但是没有把博客网站重新配置好。一拖又过了大半年时间。</p>
+
+<p>近来想起应该分享一些想法，于是想起来要重新搭建一个博客站点。中途想试试新的静态网站生成工具。在 <a href="https://www.staticgen.com/">StaticGen</a> 上看到一个列表，其中 <a href="http://hexo.io/">Hexo</a> 看起来是个比较流行的 JavaScript 静态网站生成工具。下午就试用了一下。</p>
+
+<!-- more -->
+
+
+<p>之后发现 Hexo 一个挺不符合使用习惯的地方：POST 的 md 源文件与内使用的图片资源组织结构与之前 <a href="https://github.com/jnordberg/wintersmith">Wintersmith</a> 并不一样。最终折腾了几下又换回来了。然而不得不感叹 Hexo 模板的丰富是 Wintersmith 不能比的。所以之后自己又自行改了一下 css 样式，让原来的网站看起来不是很丑。</p>
+
+<p>言归正传，选择 Github 寄放博客网站的原因是方便。</p>
+
+<p><a href="https://help.github.com/categories/github-pages-basics/">Github Pages</a> 为每个用户，用户的每个项目都保留了一个静态页面站点。这些静态站点资源是通过 git 来部署的。个人站点需要在 github 上建立一个 <code>用户名.github.io</code> 的 repo，然后把相关文件 push 到 master 分支上。
+通过 <code>https://用户名.github.io/</code> 访问。项目的站点是在相应的项目库中建立一个 gh-pages 分支，然后将其中的源代码等文件清空，并把网站文件加进去，通过 <code>https://用户名.github.io/项目名</code> 来访问。</p>
+
+<p>个人站可以绑定个人域名，通过 CNAME 映射过去。同时要在根目录下放一个 CNAME 文件，其中写上个人域名地址，以便验证和授权。</p>
+
+<p>所以，这跟以前用 ftp 上传文件没有什么区别。</p>
+
+<p>现在，这个博客网站就是一个 Github Pages 站点，并且绑定了个人域名。 <a href="https://aristotle9.github.io/">https://aristotle9.github.io/</a> 和 <a href="http://blog.mukio.org/">http://blog.mukio.org/</a> 都能访问。</p>
+</div>
+
+</article>
+
+    
+<div class="share">
+    <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_24x24">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/blog/2015/06/06/use-github-page" data-title="用Github做静态网站服务器" data-url="http://blog.mukio.org/blog/2015/06/06/use-github-page/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"mukioblog"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            document.getElementsByTagName('head')[0].appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+</section>
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2016
+
+    aristotle9
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+</body>
+</html>

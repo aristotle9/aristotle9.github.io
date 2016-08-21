@@ -1,165 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[aristotle9's Blog]]></title>
-  <link href="http://blog.mukio.org/atom.xml" rel="self"/>
-  <link href="http://blog.mukio.org/"/>
-  <updated>2016-08-21T16:35:56+08:00</updated>
-  <id>http://blog.mukio.org/</id>
-  <author>
-    <name><![CDATA[aristotle9]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE HTML>
 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>舰娘之混淆代码分析 - aristotle9's Blog</title>
+	<meta name="author" content="aristotle9">
+
+	
+	<meta name="description" content="舰娘之混淆代码分析 玩舰娘后，曾用 Clojure 写过一个自动远征的程序 kancolle-worker。 这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。 后来舰娘的主要 api 添加了一个校验参数 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="aristotle9's Blog" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://blog.mukio.org/blog/2014/08/11/remove-kancolle-obfus/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="/javascripts/jquery-3.1.0.min.js"></script>
+	
   
-  <entry>
-    <title type="html"><![CDATA[Flash弹幕播放器]]></title>
-    <link href="http://blog.mukio.org/blog/2016/08/20/flashdan-mu-bo-fang-qi/"/>
-    <updated>2016-08-20T12:29:00+08:00</updated>
-    <id>http://blog.mukio.org/blog/2016/08/20/flashdan-mu-bo-fang-qi</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello World!]]></title>
-    <link href="http://blog.mukio.org/blog/2016/08/20/hello-world/"/>
-    <updated>2016-08-20T12:23:58+08:00</updated>
-    <id>http://blog.mukio.org/blog/2016/08/20/hello-world</id>
-    <content type="html"><![CDATA[<p>各种我用过一段时间的 <del>GPL</del> 语言的 hello world 程序。</p>
 
-<!-- more -->
+</head>
 
 
-<h3>按时间排列</h3>
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<img src="/images/avatar160x160.png" alt="Profile Picture" style="width: 160px;" />
+</div>
 
-<p>C</p>
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">关于我</a></li>
+    <li><a href="/blog/archives">所有文章</a></li>
+</ul>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">puts</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Java</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;hello world&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>JavaScript</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>C++</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello world&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ActionScript3.0</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='actionscript'><span class='line'><span class="nf">trace</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Python2</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">print</span> <span class="s">&quot;hello world&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Lua</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='lua'><span class='line'><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">hello world&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>PHP</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">echo</span> <span class="s2">&quot;hello world&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Haskell</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">putStrLn</span> <span class="s2">&quot;hello world&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Clojure</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nb">println </span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Kotlin</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="nv">println</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Rust</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rust'><span class='line'><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Swift</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">println</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用Github做静态网站服务器]]></title>
-    <link href="http://blog.mukio.org/blog/2015/06/06/use-github-page/"/>
-    <updated>2015-06-06T20:00:00+08:00</updated>
-    <id>http://blog.mukio.org/blog/2015/06/06/use-github-page</id>
-    <content type="html"><![CDATA[<p>年初换了一台虚拟主机，但是没有把博客网站重新配置好。一拖又过了大半年时间。</p>
-
-<p>近来想起应该分享一些想法，于是想起来要重新搭建一个博客站点。中途想试试新的静态网站生成工具。在 <a href="https://www.staticgen.com/">StaticGen</a> 上看到一个列表，其中 <a href="http://hexo.io/">Hexo</a> 看起来是个比较流行的 JavaScript 静态网站生成工具。下午就试用了一下。</p>
-
-<!-- more -->
-
-
-<p>之后发现 Hexo 一个挺不符合使用习惯的地方：POST 的 md 源文件与内使用的图片资源组织结构与之前 <a href="https://github.com/jnordberg/wintersmith">Wintersmith</a> 并不一样。最终折腾了几下又换回来了。然而不得不感叹 Hexo 模板的丰富是 Wintersmith 不能比的。所以之后自己又自行改了一下 css 样式，让原来的网站看起来不是很丑。</p>
-
-<p>言归正传，选择 Github 寄放博客网站的原因是方便。</p>
-
-<p><a href="https://help.github.com/categories/github-pages-basics/">Github Pages</a> 为每个用户，用户的每个项目都保留了一个静态页面站点。这些静态站点资源是通过 git 来部署的。个人站点需要在 github 上建立一个 <code>用户名.github.io</code> 的 repo，然后把相关文件 push 到 master 分支上。
-通过 <code>https://用户名.github.io/</code> 访问。项目的站点是在相应的项目库中建立一个 gh-pages 分支，然后将其中的源代码等文件清空，并把网站文件加进去，通过 <code>https://用户名.github.io/项目名</code> 来访问。</p>
-
-<p>个人站可以绑定个人域名，通过 CNAME 映射过去。同时要在根目录下放一个 CNAME 文件，其中写上个人域名地址，以便验证和授权。</p>
-
-<p>所以，这跟以前用 ftp 上传文件没有什么区别。</p>
-
-<p>现在，这个博客网站就是一个 Github Pages 站点，并且绑定了个人域名。 <a href="https://aristotle9.github.io/">https://aristotle9.github.io/</a> 和 <a href="http://blog.mukio.org/">http://blog.mukio.org/</a> 都能访问。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[舰娘之混淆代码分析]]></title>
-    <link href="http://blog.mukio.org/blog/2014/08/11/remove-kancolle-obfus/"/>
-    <updated>2014-08-11T21:20:00+08:00</updated>
-    <id>http://blog.mukio.org/blog/2014/08/11/remove-kancolle-obfus</id>
-    <content type="html"><![CDATA[<p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/aristotle9" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">舰娘之混淆代码分析</h1>
+	<div class="entry-content" itemprop="articleBody"><p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
 
 <p>这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。</p>
 
@@ -184,11 +103,11 @@
 
 <p>有个简便的方法可以计算表达式 <code>~(~[][{}] &lt;&lt; ~[][{}])</code> 的结果。就是打开 Chrome 的 JS console, 运行上面的代码。正则表达式直接匹配则是 as3 语言的特性，JS 无法运行。<code>/./"234"</code> 在 as3中 是合理的表达式，结果是 <code>"2"</code>，在 JS 中是错误的式子。</p>
 
-<p>为了快速得到混淆前的代码，我编写了这个 <a href="http://blog.mukio.org/images/posts/2014-08-11-remove-kancolle-obfus/demo.swf">Flash</a> 程序，它可以将舰娘的混淆代码简化。使用效果如图：<img src="http://blog.mukio.org/images/posts/2014-08-11-remove-kancolle-obfus/image1.png" alt="常量折叠功能演示" /></p>
+<p>为了快速得到混淆前的代码，我编写了这个 <a href="/images/posts/2014-08-11-remove-kancolle-obfus/demo.swf">Flash</a> 程序，它可以将舰娘的混淆代码简化。使用效果如图：<img src="/images/posts/2014-08-11-remove-kancolle-obfus/image1.png" alt="常量折叠功能演示" /></p>
 
 <p>图中的常量是部分上周舰娘的代码。</p>
 
-<p>除此以外，舰娘的另一类代码混淆是将简单的运算符替换成函数调用。比如将 <code>x + y</code> 替换成 <code>k.a(x, y)</code>。这种方法与上面的混淆方法共同使用，产生的代码极难阅读。所以我写的 Flash 代码分析工具加入了表达式重新打印功能。效果如图: <img src="http://blog.mukio.org/images/posts/2014-08-11-remove-kancolle-obfus/image2.png" alt="代码重新打印功能演示" /></p>
+<p>除此以外，舰娘的另一类代码混淆是将简单的运算符替换成函数调用。比如将 <code>x + y</code> 替换成 <code>k.a(x, y)</code>。这种方法与上面的混淆方法共同使用，产生的代码极难阅读。所以我写的 Flash 代码分析工具加入了表达式重新打印功能。效果如图: <img src="/images/posts/2014-08-11-remove-kancolle-obfus/image2.png" alt="代码重新打印功能演示" /></p>
 
 <p>图中的代码是部分上周舰娘的代码。它将常量折叠，并且将函数调用替换成 S-表达式，与 Clojure 的代码相差无几。</p>
 
@@ -457,27 +376,69 @@
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[新站开张]]></title>
-    <link href="http://blog.mukio.org/blog/2014/07/26/new-blog/"/>
-    <updated>2014-07-26T20:20:00+08:00</updated>
-    <id>http://blog.mukio.org/blog/2014/07/26/new-blog</id>
-    <content type="html"><![CDATA[<p>自从百度空间改版后，便不再写过博客。过了几年，工作稳定下来了，新的博客站要开张了。</p>
+</div>
 
-<p>这次的网站搭建在自己的 vps 上，都是纯静态的页面。用的程序如页底所写：Wintersmith，是一个极简易的 nodejs 静态网站生成框架。</p>
+</article>
 
-<!-- more -->
+    
+<div class="share">
+    <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_24x24">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
 
 
-<p>现在没有评论功能，以后我会添加的。博客内容将会是关于自己感兴趣的项目研究，开发的小程序等等。当然也会花点时间将百度空间的旧的文章迁移到这里。</p>
 
-<p>决定使用 Wintersmith 之前，曾花了不少时间研究 Jekyll。它的功能比 Wintersmith 要丰富许多，然而因为 Jekyll 后端使用的是 Ruby 技术栈，并不很熟悉。考虑自己近期不会转用 Ruby，并且不想花太多时间在上面，最终决定使用 node.js 系的 Wintersmith。</p>
 
-<p>css 样式用的是 Typo.css，感觉对中文排版效果会比较好。</p>
-]]></content>
-  </entry>
-  
-</feed>
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/blog/2014/08/11/remove-kancolle-obfus" data-title="舰娘之混淆代码分析" data-url="http://blog.mukio.org/blog/2014/08/11/remove-kancolle-obfus/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"mukioblog"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            document.getElementsByTagName('head')[0].appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+</section>
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2016
+
+    aristotle9
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+</body>
+</html>
