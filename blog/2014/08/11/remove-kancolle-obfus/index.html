@@ -9,7 +9,7 @@
 	<meta name="author" content="aristotle9">
 
 	
-	<meta name="description" content="舰娘之混淆代码分析 玩舰娘后，曾用 Clojure 写过一个自动远征的程序 kancolle-worker。 这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。 后来舰娘的主要 api 添加了一个校验参数 &hellip;">
+	<meta name="description" content="舰娘之混淆代码分析 kancolle-worker 玩舰娘后，曾用 Clojure 写过一个自动远征的程序 kancolle-worker。 这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,16 +78,20 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">舰娘之混淆代码分析</h1>
-	<div class="entry-content" itemprop="articleBody"><p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
+	<div class="entry-content" itemprop="articleBody"><h3>kancolle-worker</h3>
+
+<p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
 
 <p>这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。</p>
+
+<h3>api_port 参数</h3>
 
 <p>后来舰娘的主要 api 添加了一个校验参数: api_port ，用于屏蔽第三方挂机程序。该参数的生成算法是混淆过的，不易阅读。如果要继续使用外挂程序，就必须疏理一下诸如下面这种代码，然后用其他语言实现。</p>
 
 <!-- more -->
 
 
-
+<h3>正则混淆</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;...$&quot;</span><span class="p">)(</span><span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="p">[][{}]</span> <span class="o">&lt;&lt;</span> <span class="o">~</span><span class="p">[][{}])))</span>
@@ -99,15 +103,23 @@
 
 <p>这种常量混淆形式比较新颖。</p>
 
+<h3>常量折叠</h3>
+
 <p>自从 Air SDK 从 Flex 编译工具中独立出来后，添加了许多功能。其中就有一个基本的常量折叠功能。常量折叠就是把代码中的常量表达式替换为表达式的最终结果，这样就省去了运行时的计算，对程序的运行效率有所提升。比如 <code>var a:int = 1 + 1;</code> 编译后与 <code>var a:int = 2;</code> 一样。我试过用 Air SDK 重新编译上面的表达式，发现没有被折叠。原因可能是上面的常量混淆利用了 as3语言的一些隐式的类型转换，以及空数组与空对象、正则表达式的的特性，超出了编译器的常量判定能力。</p>
 
 <p>有个简便的方法可以计算表达式 <code>~(~[][{}] &lt;&lt; ~[][{}])</code> 的结果。就是打开 Chrome 的 JS console, 运行上面的代码。正则表达式直接匹配则是 as3 语言的特性，JS 无法运行。<code>/./"234"</code> 在 as3中 是合理的表达式，结果是 <code>"2"</code>，在 JS 中是错误的式子。</p>
 
-<p>为了快速得到混淆前的代码，我编写了这个 <a href="/images/posts/2014-08-11-remove-kancolle-obfus/demo.swf">Flash</a> 程序，它可以将舰娘的混淆代码简化。使用效果如图：<img src="/images/posts/2014-08-11-remove-kancolle-obfus/image1.png" alt="常量折叠功能演示" /></p>
+<h3>解析程序</h3>
+
+<p>为了快速得到混淆前的代码，我编写了这个 <a href="/images/posts/2014-08-11-remove-kancolle-obfus/demo.swf">Flash</a> 程序，它可以将舰娘的混淆代码简化。使用效果如图：</p>
+
+<p><img src="/images/posts/2014-08-11-remove-kancolle-obfus/image1.png" alt="常量折叠功能演示" /></p>
 
 <p>图中的常量是部分上周舰娘的代码。</p>
 
-<p>除此以外，舰娘的另一类代码混淆是将简单的运算符替换成函数调用。比如将 <code>x + y</code> 替换成 <code>k.a(x, y)</code>。这种方法与上面的混淆方法共同使用，产生的代码极难阅读。所以我写的 Flash 代码分析工具加入了表达式重新打印功能。效果如图: <img src="/images/posts/2014-08-11-remove-kancolle-obfus/image2.png" alt="代码重新打印功能演示" /></p>
+<p>除此以外，舰娘的另一类代码混淆是将简单的运算符替换成函数调用。比如将 <code>x + y</code> 替换成 <code>k.a(x, y)</code>。这种方法与上面的混淆方法共同使用，产生的代码极难阅读。所以我写的 Flash 代码分析工具加入了表达式重新打印功能。效果如图:</p>
+
+<p><img src="/images/posts/2014-08-11-remove-kancolle-obfus/image2.png" alt="代码重新打印功能演示" /></p>
 
 <p>图中的代码是部分上周舰娘的代码。它将常量折叠，并且将函数调用替换成 S-表达式，与 Clojure 的代码相差无几。</p>
 
@@ -117,12 +129,16 @@
 
 <p>有了这个工具，加密后的算法会更快分析出来，自动远征程序又可以愉快地运行了。同时说一句：外挂有风险，使用需要谨慎。</p>
 
-<p>附1：工具使用方法
-  1. 从舰娘主程中分离出 Core.swf
-  2. 用工具反编译出 api_port 类
-  3. 使用我的工具分析其算法</p>
+<h4>附1：工具使用方法</h4>
 
-<p>附2：词法、语法源码</p>
+<ol>
+<li>从舰娘主程中分离出 Core.swf</li>
+<li>用工具反编译出 api_port 类</li>
+<li>使用我的工具分析其算法</li>
+</ol>
+
+
+<h4>附2：词法、语法源码</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

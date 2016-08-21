@@ -199,9 +199,13 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/2014/08/11/remove-kancolle-obfus/" itemprop="url">舰娘之混淆代码分析</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
+		<h3>kancolle-worker</h3>
+
+<p>玩舰娘后，曾用 <a href="http://clojure.org/">Clojure</a> 写过一个自动远征的程序 <a href="https://github.com/aristotle9/kancolle-worker">kancolle-worker</a>。</p>
 
 <p>这个程序在 Clojure 的 REPL 中提供主要的舰娘 api 及基本的游戏逻辑模型，懂 Clojure 的人很容易写出一个自动远征程序。</p>
+
+<h3>api_port 参数</h3>
 
 <p>后来舰娘的主要 api 添加了一个校验参数: api_port ，用于屏蔽第三方挂机程序。该参数的生成算法是混淆过的，不易阅读。如果要继续使用外挂程序，就必须疏理一下诸如下面这种代码，然后用其他语言实现。</p>
 
