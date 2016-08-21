@@ -4,7 +4,7 @@
   <title><![CDATA[aristotle9's Blog]]></title>
   <link href="http://blog.mukio.org/atom.xml" rel="self"/>
   <link href="http://blog.mukio.org/"/>
-  <updated>2016-08-21T18:04:46+08:00</updated>
+  <updated>2016-08-21T19:29:45+08:00</updated>
   <id>http://blog.mukio.org/</id>
   <author>
     <name><![CDATA[aristotle9]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Flash弹幕播放器]]></title>
-    <link href="http://blog.mukio.org/blog/2016/08/20/flashdan-mu-bo-fang-qi/"/>
-    <updated>2016-08-20T12:29:00+08:00</updated>
-    <id>http://blog.mukio.org/blog/2016/08/20/flashdan-mu-bo-fang-qi</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello World!]]></title>
